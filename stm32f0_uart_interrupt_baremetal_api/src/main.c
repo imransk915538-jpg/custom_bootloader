@@ -61,7 +61,8 @@ void jump_to_application(uint32_t app_addr)
 {
     /* -------- A. Remap SRAM to 0x00000000 ---------- */
     RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
-    SYSCFG->CFGR1 = (2 << SYSCFG_CFGR1_MEM_MODE_Pos);
+    //SYSCFG->CFGR1 = (2 << SYSCFG_CFGR1_MEM_MODE_Pos);
+    SYSCFG->CFGR1 = (3 << SYSCFG_CFGR1_MEM_MODE_Pos);
 
     /* -------- B. Load new MSP & PC from RAM vector ---------- */
     uint32_t new_msp = *(uint32_t*)app_addr;
